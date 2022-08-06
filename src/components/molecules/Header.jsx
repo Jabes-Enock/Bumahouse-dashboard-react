@@ -24,18 +24,14 @@ const Header = ({ handleStateMenu }) => {
       <div className='md:hidden'>
         <Logo size={20} />
       </div>
-      <div className='hidden md:flex md:justify-between w-full items-center px-4'>
-        <div>
-          <p>link</p>
-        </div>
+      <div className='hidden md:flex md:justify-between w-full items-right px-4'>
         <div className='flex space-x-2 items-center'>
-          <img src={currentUser.photoURL} alt='photoURL' className='max-w-8 max-h-8  rounded-full' />
-          <p>{currentUser.displayName}</p>
+          { !currentUser.photoURL === null  && <img src={currentUser.photoURL} alt='photoURL' className='max-w-8 max-h-8  rounded-full' /> }
+          { !currentUser.displayName && <p>{currentUser.displayName}</p>}
         </div>
-        
       </div>
       <button className='md:hidden' onClick={() => handleStateMenu()}>
-          <MdMenu size={20} />
+        <MdMenu size={20} />
       </button>
     </header>
   )

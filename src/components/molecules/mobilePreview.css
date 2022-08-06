@@ -1,0 +1,13 @@
+.mobile-preview::-webkit-scrollbar {
+    width: 4px;
+    display: none;
+}
+
+.mobile-preview::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.mobile-preview::-webkit-scrollbar-thumb {
+    background-color: lightgray;
+    border-radius: 40px;
+}

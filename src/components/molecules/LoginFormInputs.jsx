@@ -62,9 +62,9 @@ const LoginFormInputs = () => {
     }
 
     /* style variables */
-    const inputStyle = "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-purple-400";
-    const gradientBg = "bg-gradient-to-tl from-rose-400 via-fuchsia-500 to-indigo-500";
-    const hoverButton = "md:hover:text-fuchsia-500 md:hover: border md:hover:border-fuchsia-500  md:hover:from-white md:hover:to-white";
+    const inputStyle = "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-purple-400"
+    const gradientBg = "bg-gradient-to-tl from-rose-400 via-fuchsia-500 to-indigo-500"
+    const hoverButton = "md:hover:text-fuchsia-500 md:hover: border md:hover:border-fuchsia-500  md:hover:from-white md:hover:to-white"
 
     return (
         <div className="p-10 h-full">
