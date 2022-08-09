@@ -5,16 +5,16 @@ import { useParams } from 'react-router-dom'
 import { Formik, Form, ErrorMessage } from 'formik'
 
 /* hook */
-import { useUploadProduct } from '../../hooks/UseUploadProduct'
+import { useUploadAndEditProduct } from '../../hooks/UseUploadAndUpdateProduct '
 
 /* firestore connection */
 import { db } from '../../services/firebase/config'
 
 /* firestorage methods */
-import { doc, getDoc } from 'firebase/firestore'
+import { doc, getDoc, collection, updateDoc } from 'firebase/firestore'
 
 /* icons */
-import { MdOutlineEdit, MdOutlineUploadFile, MdSaveAlt } from 'react-icons/md'
+import { MdOutlineEdit, MdOutlineUploadFile } from 'react-icons/md'
 
 /* validation */
 import { productSchema } from '../../validation/ProductValidation'
@@ -27,9 +27,13 @@ import TextAreaFormik from '../molecules/TextAreaFormik'
 
 const EditProductForm = () => {
   const [product, setProduct] = useState('')
-  
-  const { percentageOfUpload, requisitionStatus, uploadProductToFirebase } =
-    useUploadProduct()
+
+  const {
+    percentageOfUpload,
+    requisitionStatus,
+    setRequisitionStatus,
+    uploadProductToFirebase,
+  } = useUploadAndEditProduct()
   const { id, category } = useParams()
 
   useEffect(() => {
@@ -47,7 +51,6 @@ const EditProductForm = () => {
         console.log(error.message)
       }
     }
-
     getProductData()
   }, [])
 
@@ -76,31 +79,6 @@ const EditProductForm = () => {
     )
   }
 
-  const Image = ({url}) => {
-    return (
-      <div>
-        <p className="text-gray-600 text-md mb-2">Imagem atual</p>
-        <div className="grid sm:grid-cols-2 place-items-center h-[200px] border rounded-xl overflow-hidden">
-          <div className="bg-gray-50 h-full w-full grid place-items-center">
-            <img
-              className="w-40 h-40"
-              src={url}
-              alt="Imagem selecionada"
-            />
-          </div>
-          <label className="grid place-items-center text-blue-500 bg-gray-200 h-full w-full p-6">
-            <MdOutlineUploadFile size={60} />
-          <button 
-            className="w-full text-white bg-blue-500 hover:bg-blue-600  focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 flex items-center justify-center"
-          >Trocar imagem</button>
-
-          </label>
-        </div>
-        
-      </div>
-    )
-  }
-
   return (
     <>
       {product && (
@@ -114,7 +92,40 @@ const EditProductForm = () => {
             productImage: product.productImageUrl,
           }}
           validationSchema={productSchema}
-          onSubmit={(values) => console.log(values)}
+          onSubmit={(values) => {
+            const insertDatasUpdate = async () => {
+              try {
+                const date = new Date()
+                const productsCollectionRef = collection(
+                  db,
+                  values.productCategory
+                )
+                const data = {
+                  productName: values.productName,
+                  productDescription: values.productDescription,
+                  productPrice: Number(values.productPrice),
+                  productQuantity: Number(values.productQuantity),
+                  productImageUrl: values.productImage,
+                  update_at: `${date.getDate()}/${(date.getMonth()) + 1}/${date.getFullYear()} at ${date.getHours()}: ${date.getMinutes()}`,
+                }
+                const productDoc = doc(productsCollectionRef, id)
+                await updateDoc(productDoc, data)
+                setRequisitionStatus('success')
+                return
+              } catch (error) {
+                setRequisitionStatus('error')
+                return error
+              }
+            }
+
+            values.productImage.name
+              ? uploadProductToFirebase(
+                  values,
+                  `produtos/${values.productCategory}/${values.productImage.name}`,
+                  id
+                )
+              : insertDatasUpdate()
+          }}
         >
           {({ values, setFieldValue }) => (
             <Form className="grid grid-cols-1 lg:grid-cols-2 lg:gap-x-28 gap-y-8">
@@ -139,44 +150,63 @@ const EditProductForm = () => {
                 name="productDescription"
                 type="text"
               />
-              <Image url={values.productImage} />
 
               {/* Image field */}
-              {/* <div>
-              <label
-                htmlFor="productImage"
-                className={`flex flex-col justify-center items-center w-full h-64 rounded-lg bg-gray-50 border-2 border-dashed cursor-pointer`}
-              >
-                <div className="flex flex-col justify-center items-center pt-5 pb-6">
-                  <MdSaveAlt size={62} color={'#ccc'} />
-                  <div className="mb-2 grid place-items-center text-sm text-blue-500 space-y-4">
-                    <div className="">Click para selecionar arquivo.</div>
-                    <div className="">(JPEG, JPG, PNG, SVG, Gif)</div>
-                    {values.productImage !== null &&
-                      values.productImage !== '' && (
-                        <div className="max-w-full truncate my">
-                          {values.productImage?.name}
-                        </div>
-                      )}
+              <div>
+                {!values.productImage.name ? (
+                  <p className="text-gray-600 text-md mb-2">Imagem atual</p>
+                ) : (
+                  <p className="text-gray-600 text-md mb-2">
+                    Essa nova imagem será adicionada.
+                  </p>
+                )}
+                <div className="grid sm:grid-cols-2 place-items-center h-[200px] border rounded-xl overflow-hidden">
+                  <div className="bg-gray-50 h-full w-full grid place-items-center">
+                    {!values.productImage.name ? (
+                      <img
+                        className="w-40 h-40"
+                        src={values.productImage}
+                        alt="Imagem selecionada"
+                      />
+                    ) : (
+                      <div className="h-[200px] flex justify-center">
+                        <img
+                          className="w-auto h-full"
+                          src={URL.createObjectURL(values.productImage)}
+                          alt="Imagem selecionada"
+                        />
+                      </div>
+                    )}
                   </div>
+                  <label
+                    htmlFor="productImage"
+                    className="cursor-pointer grid place-items-center text-blue-500 hover:text-gray-100 bg-gray-200 hover:bg-blue-500 h-full w-full p-6"
+                  >
+                    <MdOutlineUploadFile size={60} />
+                    <p className="">Trocar imagem</p>
+                    <input
+                      id="productImage"
+                      name="productImage"
+                      type="file"
+                      className="hidden"
+                      onChange={(event) =>
+                        setFieldValue(
+                          'productImage',
+                          event.currentTarget.files[0]
+                        )
+                      }
+                    />
+
+                    <ErrorMessage
+                      component={'p'}
+                      name="productImage"
+                      className="text-xs text-red-600 mt-2"
+                    />
+                  </label>
                 </div>
-              </label>
-              <input
-                id="productImage"
-                name="productImage"
-                type="file"
-                className="hidden"
-                onChange={(event) =>
-                  setFieldValue('productImage', event.currentTarget.files[0])
-                }
-              />
-              <ErrorMessage
-                component={'p'}
-                name="productImage"
-                className="text-xs text-red-600 mt-2"
-              />
-            </div> */}
+              </div>
               <Requisition status={requisitionStatus} />
+
             </Form>
           )}
         </Formik>

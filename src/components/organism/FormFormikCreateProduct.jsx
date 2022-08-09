@@ -1,7 +1,7 @@
 import { Formik, Form, ErrorMessage } from 'formik'
 
 /* hook */
-import { useUploadProduct } from '../../hooks/UseUploadProduct'
+import { useUploadAndCreateProduct } from '../../hooks/UseUploadAndCreateProduct'
 
 /* icons */
 import { MdOutlineUploadFile, MdSaveAlt } from 'react-icons/md'
@@ -19,7 +19,7 @@ import SelectFormik from '../molecules/SelectFormik'
 
 const FormFormik = () => {
   const { percentageOfUpload, requisitionStatus, uploadProductToFirebase } =
-    useUploadProduct()
+  useUploadAndCreateProduct()
 
   const Requisition = ({ status }) => {
     return (

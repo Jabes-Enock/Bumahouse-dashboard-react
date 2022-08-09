@@ -18,7 +18,6 @@ const Table = () => {
   
   const [products, setProducts] = useState([])
   const { category } = useParams()
-  console.log(category)
 
   useEffect(() => {
     const getDatas = async () => {
@@ -26,7 +25,6 @@ const Table = () => {
       try {
         const data = await getDocs(categoryCollectionRef)
         const values = data.docs.map((doc) => ({...doc.data(), id: doc.id}))
-        console.log(values)
         setProducts(values)
       } catch (error) {
           console.log(error.message)

@@ -4,20 +4,20 @@ import { useState } from 'react'
 import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage'
 
 /* firestorage methods from firebase */
-import { collection, addDoc } from 'firebase/firestore'
+import { updateDoc, doc, collection } from 'firebase/firestore'
 
 /* import storage and db */
 import { storage, db } from '../services/firebase/config'
 
-export const useUploadProduct = () => {
+export const useUploadAndEditProduct = () => {
   const [percentageOfUpload, setPercentageOfUpload] = useState(0)
   const [requisitionStatus, setRequisitionStatus] = useState('')
 
-  const uploadProductToFirebase = (values, path) => {
-    /* const path = `produtos/${values.productCategory}/${values.productImage.name}` */
+  const uploadProductToFirebase = (values, path, id) => {
     const storageRef = ref(storage, path)
     const uploadTask = uploadBytesResumable(storageRef, values.productImage)
     const date = new Date()
+    
     uploadTask.on(
       'state_changed',
       (snapshot) => {
@@ -30,7 +30,7 @@ export const useUploadProduct = () => {
         return error
       },
       () => {
-        const uploadNewProduct = async () => {
+        const updateNewProduct = async () => {
           try {
             const downloadURL = await getDownloadURL(uploadTask.snapshot.ref)
             const productsCollectionRef = collection(db, values.productCategory)
@@ -40,9 +40,10 @@ export const useUploadProduct = () => {
               productPrice: Number(values.productPrice),
               productQuantity: Number(values.productQuantity),
               productImageUrl: downloadURL,
-              created_at: `${date.getDay()}/${date.getMonth()}/${date.getFullYear()} at ${date.getHours()}:${date.getMinutes()}`,
+              update_at: `${date.getDate()}/${(date.getMonth()) + 1}/${date.getFullYear()} at ${date.getHours()}:${date.getMinutes()}`
             }
-            await addDoc(productsCollectionRef, data)
+            const productDoc = doc(productsCollectionRef, id)
+            await updateDoc(productDoc, data)
             setRequisitionStatus('success')
             return
           } catch (error) {
@@ -50,7 +51,7 @@ export const useUploadProduct = () => {
             return error
           }
         }
-        uploadNewProduct()
+        updateNewProduct()
       }
     )
   }
