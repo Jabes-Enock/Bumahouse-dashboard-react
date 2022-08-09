@@ -11,7 +11,11 @@ import Dashboard from '../pages/Dashboard'
 import Products from '../pages/Products'
 import CreateProduct from '../pages/CreateProduct'
 
-const App = () => {
+/* component */
+import CategoryTemplate from '../components/template/CategoryTemplate'
+import EditProductTemplate from '../components/template/EditProductTemplate'
+
+const RoutesApp = () => {
   const { currentUser } = UserAuth()
  
   return ( 
@@ -24,7 +28,13 @@ const App = () => {
         {currentUser &&
           <Route path='/'  element={<LayoutDashboard />} >
             <Route path='dashboard' element={<Dashboard/>} />
-            <Route path='produtos'  element={<Products />} />
+            <Route path='produtos'>
+              <Route index element={<Products />} />
+              <Route path=':category'>
+                <Route index element={<CategoryTemplate />} />
+                <Route path='editar/:id' element={<EditProductTemplate />} />
+              </Route>
+            </Route>
             <Route path='adicionar-produto'  element={<CreateProduct/>} />
           </Route>
         }
@@ -34,4 +44,4 @@ const App = () => {
   )
 }
 
-export default App
+export default RoutesApp
