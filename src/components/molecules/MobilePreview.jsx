@@ -6,7 +6,7 @@ import { MdMenu, MdSearch, MdShoppingCart } from 'react-icons/md'
 const MobilePreview = (props) => {
   return (
     <div className="mobile-preview w-[240px] h-[500px] border-[12px] overflow-y-auto border-gray-800 rounded-3xl pb-8">
-      <div className="w-full h-16 bg-blue-600 p-4">
+      <div className="w-full h-16 bg-blue-500 p-4">
         <nav className="flex justify-between">
           <MdMenu size={20} color={'white'} />
           <div className="flex space-x-2">
@@ -36,9 +36,9 @@ const MobilePreview = (props) => {
         )}
 
         {props.price && (
-          <div className="text-2xl">
-            <span>R$ </span>
-            {props.price}
+          <div >
+            <span className="text-2xl">R$ {(props.price).toFixed(2)}</span>
+             / {(props.unit)}
           </div>
         )}
         {!props.price && (
@@ -47,7 +47,7 @@ const MobilePreview = (props) => {
 
         {props.quantity && (
           <div className="bg-gray-100 p-2 rounded-lg text-sm">
-            <span>Disponível: </span>
+            <span>Disponível: </span><br/>
             {props.quantity} unidades.
           </div>
         )}

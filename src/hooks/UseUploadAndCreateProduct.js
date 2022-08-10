@@ -38,9 +38,10 @@ export const useUploadAndCreateProduct = () => {
               productName: values.productName,
               productDescription: values.productDescription,
               productPrice: Number(values.productPrice),
+              productUnit: values.productUnit,
               productQuantity: Number(values.productQuantity),
               productImageUrl: downloadURL,
-              created_at: `${date.getDay()}/${(date.getMonth()) + 1}/${date.getFullYear()} at ${date.getHours()}:${date.getMinutes()}`,
+              createdAt: `${date.getDate()}/${(date.getMonth()) + 1}/${date.getFullYear()} at ${date.getHours()}:${date.getMinutes()}`,
             }
             await addDoc(productsCollectionRef, data)
             setRequisitionStatus('success')

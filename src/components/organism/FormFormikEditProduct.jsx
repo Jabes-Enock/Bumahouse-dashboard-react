@@ -56,7 +56,7 @@ const EditProductForm = () => {
 
   const Requisition = ({ status }) => {
     return (
-      <>
+      <div className='space-y-4'>
         {(status === '' || status === 'success') && (
           <button
             type="submit"
@@ -70,12 +70,8 @@ const EditProductForm = () => {
           <ProgressBar percentage={percentageOfUpload} />
         )}
         {status === 'error' && <p>Algo deu errado</p>}
-        {status === 'success' && (
-          <>
-            <SuccessAlert />
-          </>
-        )}
-      </>
+        {status === 'success' && <SuccessAlert />}
+      </div>
     )
   }
 
@@ -106,7 +102,7 @@ const EditProductForm = () => {
                   productPrice: Number(values.productPrice),
                   productQuantity: Number(values.productQuantity),
                   productImageUrl: values.productImage,
-                  update_at: `${date.getDate()}/${(date.getMonth()) + 1}/${date.getFullYear()} at ${date.getHours()}: ${date.getMinutes()}`,
+                  updateAt: `${date.getDate()}/${(date.getMonth()) + 1}/${date.getFullYear()} at ${date.getHours()}: ${date.getMinutes()}`,
                 }
                 const productDoc = doc(productsCollectionRef, id)
                 await updateDoc(productDoc, data)
@@ -144,7 +140,10 @@ const EditProductForm = () => {
                 name="productQuantity"
                 type="number"
               />
-              <p className="text-gray-600 text-xl">Categoria: {category}</p>
+              <div>
+                <p className="text-gray-600 ">Categoria</p>
+                <p className="text-gray-600 ">{category}</p>
+              </div>
               <TextAreaFormik
                 label="Descrição do produto"
                 name="productDescription"
@@ -160,7 +159,7 @@ const EditProductForm = () => {
                     Essa nova imagem será adicionada.
                   </p>
                 )}
-                <div className="grid sm:grid-cols-2 place-items-center h-[200px] border rounded-xl overflow-hidden">
+                <div className="grid grid-cols-1 sm:grid-cols-2 place-items-center md:h-[230px] border rounded-xl overflow-hidden">
                   <div className="bg-gray-50 h-full w-full grid place-items-center">
                     {!values.productImage.name ? (
                       <img

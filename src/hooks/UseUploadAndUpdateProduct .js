@@ -38,9 +38,10 @@ export const useUploadAndEditProduct = () => {
               productName: values.productName,
               productDescription: values.productDescription,
               productPrice: Number(values.productPrice),
+              productUnit: values.productUnit,
               productQuantity: Number(values.productQuantity),
               productImageUrl: downloadURL,
-              update_at: `${date.getDate()}/${(date.getMonth()) + 1}/${date.getFullYear()} at ${date.getHours()}:${date.getMinutes()}`
+              updatedAt: `${date.getDate()}/${(date.getMonth()) + 1}/${date.getFullYear()} at ${date.getHours()}:${date.getMinutes()}`
             }
             const productDoc = doc(productsCollectionRef, id)
             await updateDoc(productDoc, data)

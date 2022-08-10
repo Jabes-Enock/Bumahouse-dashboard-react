@@ -14,6 +14,7 @@ import CreateProduct from '../pages/CreateProduct'
 /* component */
 import CategoryTemplate from '../components/template/CategoryTemplate'
 import EditProductTemplate from '../components/template/EditProductTemplate'
+import DeleteProductTemplate from '../components/template/DeleteProductTemplate'
 
 const RoutesApp = () => {
   const { currentUser } = UserAuth()
@@ -33,6 +34,7 @@ const RoutesApp = () => {
               <Route path=':category'>
                 <Route index element={<CategoryTemplate />} />
                 <Route path='editar/:id' element={<EditProductTemplate />} />
+                <Route path='delete/:id' element={<DeleteProductTemplate />} />
               </Route>
             </Route>
             <Route path='adicionar-produto'  element={<CreateProduct/>} />

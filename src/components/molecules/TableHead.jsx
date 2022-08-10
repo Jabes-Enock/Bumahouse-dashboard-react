@@ -1,6 +1,6 @@
 const TableHead = () => {
   return (
-    <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+    <thead className="text-xs text-gray-700 uppercase bg-gray-200">
       <tr>
         <th scope="col" className="py-3 px-6 text-center">
           Foto

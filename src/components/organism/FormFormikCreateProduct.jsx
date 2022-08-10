@@ -15,7 +15,8 @@ import SuccessAlert from '../atoms/SuccessAlert'
 import InputFormik from '../molecules/InputFormik'
 import TextAreaFormik from '../molecules/TextAreaFormik'
 import MobilePreview from '../molecules/MobilePreview'
-import SelectFormik from '../molecules/SelectFormik'
+import SelectFormikCategories from '../molecules/SelectFormikCategories'
+import SelectFormikUnidade from '../molecules/SelectFormikUnidade'
 
 const FormFormik = () => {
   const { percentageOfUpload, requisitionStatus, uploadProductToFirebase } =
@@ -27,7 +28,7 @@ const FormFormik = () => {
         {(status === '' || status === 'success') && (
           <button
             type="submit"
-            className="lg:row-start-2 row-start-3 lg:mt-20 w-52 text-white bg-orange-500 hover:bg-orange-600  focus:outline-none font-medium rounded-lg text-sm  py-2.5 flex justify-center items-center"
+            className="lg:row-start-2 row-start-3 lg:mt-20 w-52 text-white bg-blue-500 hover:bg-blue-600  focus:outline-none font-medium rounded-lg text-sm  py-2.5 flex justify-center items-center"
           >
             <MdOutlineUploadFile size={30} />
             <p className="p-2 text-md">Adicionar produto</p>
@@ -52,6 +53,7 @@ const FormFormik = () => {
         productName: '',
         productDescription: '',
         productPrice: '',
+        productUnit: 'unidade',
         productQuantity: '',
         productCategory: 'elétrica',
         productImage: null,
@@ -72,17 +74,25 @@ const FormFormik = () => {
               name="productName"
               type="text"
             />
-            <InputFormik
-              label="Preço do produto"
-              name="productPrice"
-              type="number"
-            />
+            <div className="flex space-x-4">
+              <div className="flex-1">
+                <InputFormik
+                label="Preço do produto"
+                name="productPrice"
+                type="number"
+              />
+              </div>
+              <div className="flex-1">
+                <SelectFormikUnidade label="Unidade de medida" name="productUnit"/>
+              </div>
+              
+            </div>
             <InputFormik
               label="Quantidade em estoque"
               name="productQuantity"
               type="number"
             />
-            <SelectFormik label="Categoria" name="productCategory" />
+            <SelectFormikCategories label="Categoria" name="productCategory" />
             <TextAreaFormik
               label="Descrição do produto"
               name="productDescription"
@@ -127,11 +137,12 @@ const FormFormik = () => {
             <Requisition status={requisitionStatus} />
           </Form>
 
-          <div className="lg:col-start-3 md:col-span-2 flex justify-center w-full">
+          <div className="lg:col-start-3 md:col-start-1 md:col-span-2">
             <MobilePreview
               title={values.productName}
               image={values.productImage}
               price={values.productPrice}
+              unit={values.productUnit}
               quantity={values.productQuantity}
               category={values.productCategory}
               description={values.productDescription}
