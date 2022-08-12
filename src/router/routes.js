@@ -22,9 +22,11 @@ const RoutesApp = () => {
   return ( 
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<Home/>} />
         {!currentUser &&
-          <Route path='login' element={<Login />} />
+          <Route path='/'>
+            <Route index element={<Home />} />
+            <Route path='login' element={<Login />} />
+          </Route>
         }
         {currentUser &&
           <Route path='/'  element={<LayoutDashboard />} >

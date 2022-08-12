@@ -44,12 +44,12 @@ const Table = () => {
       <div className="w-full h-full bg-white px-8 py-16 flex flex-col md:flex-row  md:gap-4 sm:gap-y-8 text-center">
         <div className="w-full grid place-items-center">
           <p>Nenhum produto cadastrado nessa categoria.</p>
-          <FcEmptyTrash size={200} />
+          <FcEmptyTrash size={150} />
         </div>
         <div className="self-center text-6xl text-blue-500">Ou</div>
         <div className="w-full grid place-items-center  ">
           <p>Conexão inválida</p>
-          <FcSynchronize size={200} />
+          <FcSynchronize size={150} />
         </div>
       </div>
     )

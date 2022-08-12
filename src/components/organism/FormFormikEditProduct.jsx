@@ -21,6 +21,7 @@ import { productSchema } from '../../validation/ProductValidation'
 
 /* components */
 import ProgressBar from '../atoms/ProgressBar'
+import AlertMessage from '../atoms/AlertMessage'
 import SuccessAlert from '../atoms/SuccessAlert'
 import InputFormik from '../molecules/InputFormik'
 import TextAreaFormik from '../molecules/TextAreaFormik'
@@ -60,7 +61,7 @@ const EditProductForm = () => {
         {(status === '' || status === 'success') && (
           <button
             type="submit"
-            className="w-52 text-white bg-blue-500 hover:bg-blue-600  focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 flex items-center justify-center"
+            className="md:w-52 w-full text-white bg-blue-500 hover:bg-blue-600  focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 flex items-center justify-center mb-8"
           >
             <MdOutlineEdit size={30} />
             <p className="ml-2 p-2 text-md">Editar produto</p>
@@ -69,7 +70,7 @@ const EditProductForm = () => {
         {status === 'started' && (
           <ProgressBar percentage={percentageOfUpload} />
         )}
-        {status === 'error' && <p>Algo deu errado</p>}
+        {status === 'error' && <AlertMessage message={'Você não tem permissão para editar.'} />}
         {status === 'success' && <SuccessAlert />}
       </div>
     )

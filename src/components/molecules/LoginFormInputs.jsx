@@ -60,10 +60,6 @@ const LoginFormInputs = () => {
   /* style variables */
   const inputStyle =
     'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-purple-400'
-  const gradientBg =
-    'bg-gradient-to-tl from-rose-400 via-fuchsia-500 to-indigo-500'
-  const hoverButton =
-    'md:hover:text-fuchsia-500 md:hover: border md:hover:border-fuchsia-500  md:hover:from-white md:hover:to-white'
 
   return (
     <div className="p-10 h-full">
@@ -103,7 +99,7 @@ const LoginFormInputs = () => {
       </div>
       <div className="flex items-center justify-between">
         <button
-          className={`w-full flex justify-center text-white text-sm font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline ${gradientBg} ${hoverButton} `}
+          className={`w-full flex justify-center text-white text-sm font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline bg-orange-500 hover:bg-orange-400`}
           type="button"
           onClick={handleEmailAndPassword}
         >
@@ -114,7 +110,7 @@ const LoginFormInputs = () => {
       <div className="flex items-center justify-between mt-4">
         <button
           type="button"
-          className="w-full  text-white bg-[#4285F4] hover:bg-blue-400  focus:outline-none  font-medium rounded-full text-sm px-5 py-2.5 text-center inline-flex justify-center items-center dark:focus:ring-[#4285F4]/55"
+          className="w-full  text-white bg-blue-500 hover:bg-blue-400  focus:outline-none  font-medium rounded-full text-sm px-5 py-2.5 text-center inline-flex justify-center items-center dark:focus:ring-blue-500"
           onClick={handleSigInWithGoogle}
         >
           {!requestStateWithGoogle && (

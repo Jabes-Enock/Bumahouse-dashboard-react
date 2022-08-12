@@ -12,7 +12,7 @@ const CategoryProduct = () => {
   return (
     <>{ 
       categoriesList.map( category =>(
-        <Link to={`${category.categoryName}`} key={category.categoryName} className="drop-shadow-xl rounded-xl overflow-hidden">
+        <Link to={`${category.categoryName}`} key={category.categoryName} className="drop-shadow-xl">
           <ProductItem categoryName={category.categoryName} bgColor={category.bgColor} icon={category.icon} />
         </Link>
         )

@@ -38,8 +38,8 @@ const Links = ({ handleStateMenu }) => {
   ]
 
   const style =
-    'w-100 flex space-x-4 p-4 pr-0 md:h-16 items-center md:hover:text-blue-400 md:hover:bg-gray-100'
-  const active = 'bg-blue-400 text-white'
+    'w-100 flex space-x-4 p-4 pr-0 md:h-16 items-center text-gray-400 md:hover:text-blue-400'
+  const active = 'bg-gray-700 text-blue-500'
   return (
     <>
       {linksToNavigate.map((link) => (

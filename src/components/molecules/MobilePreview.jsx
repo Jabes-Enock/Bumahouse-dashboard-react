@@ -6,7 +6,7 @@ import { MdMenu, MdSearch, MdShoppingCart } from 'react-icons/md'
 const MobilePreview = (props) => {
   return (
     <div className="mobile-preview w-[240px] h-[500px] border-[12px] overflow-y-auto border-gray-800 rounded-3xl pb-8">
-      <div className="w-full h-16 bg-blue-500 p-4">
+      <div className="w-full h-16 bg-orange-500 p-4">
         <nav className="flex justify-between">
           <MdMenu size={20} color={'white'} />
           <div className="flex space-x-2">
@@ -69,13 +69,13 @@ const MobilePreview = (props) => {
           <div className="w-full">
             <button
               type="button"
-              className=" w-full text-white text-xs bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-md px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 "
+              className=" w-full text-white text-xs bg-orange-500 hover:bg-orange-600 focus:ring-4 focus:ring-blue-300 font-medium rounded-md px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 "
             >
               Comprar agora
             </button>
             <button
               type="button"
-              className=" w-full text-blue-800 text-xs bg-blue-200 hover:bg-blue-100 focus:ring-4 focus:ring-blue-300 font-bold rounded-md px-5 py-2.5 mr-2 mb-2 "
+              className=" w-full text-orange-800 text-xs bg-orange-200 hover:bg-orange-100 focus:ring-4 focus:ring-blue-300 font-bold rounded-md px-5 py-2.5 mr-2 mb-2 "
             >
               Adicionar ao carrinho
             </button>

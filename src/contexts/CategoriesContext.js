@@ -18,37 +18,37 @@ export const CategoriesContextProvider = ({children}) => {
   const categories = [
     {
       categoryName: 'elétrica',
-      bgColor: 'bg-gradient-to-r from-yellow-400 hover:from-white to-orange-500 hover:to-white border hover:border-blue-500 rounded-xl',
+      bgColor: 'bg-gradient-to-r from-yellow-400 to-orange-500 border rounded-xl text-white hover:scale-105 ease-in-out duration-300',
       icon: <MdOutlineFlashOn />
     },
     {
       categoryName: 'alvenaria',
-      bgColor: 'bg-gradient-to-r from-red-500 hover:from-white to-red-800 hover:to-white border hover:border-blue-500 rounded-xl',
+      bgColor: 'bg-gradient-to-r from-red-500 to-red-800 border rounded-xl text-white hover:scale-105 ease-in-out duration-300',
       icon: <MdBackupTable />
     },
     {
       categoryName: 'hidráulica',
-      bgColor: 'bg-gradient-to-r from-blue-400 hover:from-white to-blue-800 hover:to-white border hover:border-blue-500 rounded-xl',
+      bgColor: 'bg-gradient-to-r from-blue-400 to-blue-800 border rounded-xl text-white hover:scale-105 ease-in-out duration-300',
       icon: <MdWaves />
     },
     {
       categoryName: 'madeira',
-      bgColor: 'bg-gradient-to-r from-orange-400 hover:from-white to-orange-800 hover:to-white border hover:border-blue-500 rounded-xl',
+      bgColor: 'bg-gradient-to-r from-orange-400 to-orange-800 border rounded-xl text-white hover:scale-105 ease-in-out duration-300',
       icon: <MdStackedBarChart />
     },
     {
       categoryName: 'tintas',
-      bgColor: 'bg-gradient-to-r from-rose-400  hover:from-white to-rose-800 hover:to-white border hover:border-blue-500 rounded-xl',
+      bgColor: 'bg-gradient-to-r from-rose-400  to-rose-800 border rounded-xl text-white hover:scale-105 ease-in-out duration-300',
       icon: <MdWaterDrop />
     },
     {
       categoryName: 'pisos',
-      bgColor: 'bg-gradient-to-r from-slate-400 hover:from-white to-slate-800 hover:to-white border hover:border-blue-500 rounded-xl',
+      bgColor: 'bg-gradient-to-r from-slate-400 to-slate-800 border rounded-xl text-white hover:scale-105 ease-in-out duration-300',
       icon: <MdViewQuilt />
     },
     {
       categoryName: 'ferragem',
-      bgColor: 'bg-gradient-to-r from-amber-500 hover:from-white to-amber-800 hover:to-white border hover:border-blue-500 rounded-xl',
+      bgColor: 'bg-gradient-to-r from-amber-500 to-amber-800 border rounded-xl text-white hover:scale-105 ease-in-out duration-300',
       icon: <MdVerticalSplit />
     },
   ]

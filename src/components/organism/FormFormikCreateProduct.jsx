@@ -11,6 +11,7 @@ import { productSchema } from '../../validation/ProductValidation'
 
 /* components */
 import ProgressBar from '../atoms/ProgressBar'
+import AlertMessage from '../atoms/AlertMessage'
 import SuccessAlert from '../atoms/SuccessAlert'
 import InputFormik from '../molecules/InputFormik'
 import TextAreaFormik from '../molecules/TextAreaFormik'
@@ -28,7 +29,7 @@ const FormFormik = () => {
         {(status === '' || status === 'success') && (
           <button
             type="submit"
-            className="lg:row-start-2 row-start-3 lg:mt-20 w-52 text-white bg-blue-500 hover:bg-blue-600  focus:outline-none font-medium rounded-lg text-sm  py-2.5 flex justify-center items-center"
+            className="lg:row-start-2 row-start-3 lg:mt-20 md:w-52 w-full text-white bg-blue-500 hover:bg-blue-600  focus:outline-none font-medium rounded-lg text-sm  py-2.5 flex justify-center items-center"
           >
             <MdOutlineUploadFile size={30} />
             <p className="p-2 text-md">Adicionar produto</p>
@@ -37,7 +38,7 @@ const FormFormik = () => {
         {status === 'started' && (
           <ProgressBar percentage={percentageOfUpload} />
         )}
-        {status === 'error' && <p>Algo deu errado</p>}
+        {status === 'error' && <AlertMessage message={'Você não tem permissão para criar.'} />}
         {status === 'success' && (
           <>
             <SuccessAlert />
@@ -109,10 +110,10 @@ const FormFormik = () => {
                   <MdSaveAlt size={62} color={'#ccc'} />
                   <div className="mb-2 grid place-items-center text-sm text-blue-500 space-y-4">
                     <div className="">Click para selecionar arquivo.</div>
-                    <div className="">(JPEG, JPG, PNG, SVG, Gif)</div>
+                    <div className="">(JPEG, JPG, PNG, SVG)</div>
                     {values.productImage !== null &&
                       values.productImage !== '' && (
-                        <div className="max-w-full truncate my">
+                        <div className="max-w-full truncate text-orange-500">
                           {values.productImage?.name}
                         </div>
                       )}
