@@ -1,7 +1,7 @@
-import { BrowserRouter ,Routes, Route, Navigate  } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 
 /* context */
-import { UserAuth } from "../contexts/AuthContext"
+import { UserAuth } from '../contexts/AuthContext'
 
 /* pages */
 import Login from '../pages/Login'
@@ -18,31 +18,34 @@ import DeleteProductTemplate from '../components/template/DeleteProductTemplate'
 
 const RoutesApp = () => {
   const { currentUser } = UserAuth()
- 
-  return ( 
+
+  return (
     <BrowserRouter>
       <Routes>
-        {!currentUser &&
-          <Route path='/'>
+        {!currentUser && (
+          <Route path="/">
             <Route index element={<Home />} />
-            <Route path='login' element={<Login />} />
+            <Route path="login" element={<Login />} />
           </Route>
-        }
-        {currentUser &&
-          <Route path='/'  element={<LayoutDashboard />} >
-            <Route path='dashboard' element={<Dashboard/>} />
-            <Route path='produtos'>
+        )}
+        {currentUser && (
+          <Route path="/" element={<LayoutDashboard />}>
+            <Route path="dashboard" element={<Dashboard />} />
+            <Route path="produtos">
               <Route index element={<Products />} />
-              <Route path=':category'>
+              <Route path=":category">
                 <Route index element={<CategoryTemplate />} />
-                <Route path='editar/:id' element={<EditProductTemplate />} />
-                <Route path='delete/:id' element={<DeleteProductTemplate />} />
+                <Route path="editar/:id" element={<EditProductTemplate />} />
+                <Route path="delete/:id" element={<DeleteProductTemplate />} />
               </Route>
             </Route>
-            <Route path='adicionar-produto'  element={<CreateProduct/>} />
+            <Route path="adicionar-produto" element={<CreateProduct />} />
           </Route>
-        }
-        <Route path='*' element={<Navigate to={ currentUser? 'dashboard' : 'login'} />} />
+        )}
+        <Route
+          path="*"
+          element={<Navigate to={currentUser ? 'dashboard' : 'login'} />}
+        />
       </Routes>
     </BrowserRouter>
   )
