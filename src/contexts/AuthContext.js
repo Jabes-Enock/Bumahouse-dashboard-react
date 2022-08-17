@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from 'react'
-/* Auth methods from firebase */
 
+/* Auth methods from firebase */
 import {
   createUserWithEmailAndPassword,
   signInWithPopup,
