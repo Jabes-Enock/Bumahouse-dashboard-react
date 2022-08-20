@@ -2,6 +2,8 @@
 
 ## :bookmark_tabs:Summary
 
+![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=STATUS&message=DEVELOPING&color=GREEN&style=for-the-badge)
+
 1. [Intoduction](#Introduction)
 2. [Demo](#live-demo)
 3. [Features and some gifs ](#features-and-demo)
