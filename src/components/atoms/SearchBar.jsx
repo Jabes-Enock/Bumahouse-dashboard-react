@@ -9,7 +9,7 @@ const SearchBar = () => {
   const handleSearch = (e) => {
     e.preventDefault()
     //Your logic goes here
-    console.log(search)
+    alert('Você buscou por: ' + search)
   }
 
   return (

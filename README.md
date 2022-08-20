@@ -1,16 +1,17 @@
 # Bumahouse - building materials house
 
-## :bookmark_tabs:Summary
-
 ![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=STATUS&message=DEVELOPING&color=GREEN&style=for-the-badge)
 
-1. [Intoduction](#Introduction)
+## :bookmark_tabs:Summary
+
+1. [Introduction](#Introduction)
 2. [Demo](#live-demo)
-3. [Features and some gifs ](#features-and-demo)
+3. [Features and some gif's ](#features-and-demo)
 4. [Technologies](#Technologies)
 5. [Installation](#Installation)
 6. [Categories](#categories)
 7. [My opinion about this project](#opinion)
+8. [New features](#new-features)
 
 
 <div id="Introduction">
@@ -314,7 +315,18 @@ This project helped me understand how powerful react and firebase are, after I f
 
 The result is that I am proud of myself.
 </div>
+</br>
+
+<div id="new-features">
+
+## :eyes: I wanna add this new features :eyes:
+
+#### :one: Add formik and yup in login page
+#### :two: Validate image type before uploading to Firebase database
+#### :three: Check if data has changed before uploading to Firebase database in the ...category/edit/:id route
+
+</div>
 
 </br></br>
 
-Made by  :heart: by Jabes Enock
+Made with :heart: by Jabes Enock

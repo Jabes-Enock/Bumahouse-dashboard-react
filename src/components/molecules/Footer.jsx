@@ -14,7 +14,7 @@ const Footer = () => {
       <div
         className="pt-3 space-y-5 md:space-y-0 grid md:grid-cols-2 lg:grid-cols-4 md:pl-5 lg:px-6 lg:py-10 gap-6 mb-10"
       >
-        {titleGroup.map( item => <FooterLinks titleGroup={item} />)
+        {titleGroup.map( item => <FooterLinks key={item} titleGroup={item} />)
 
         }
 
