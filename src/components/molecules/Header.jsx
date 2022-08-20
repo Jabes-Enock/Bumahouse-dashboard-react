@@ -9,6 +9,7 @@ import './Header.css'
 
 /* context */
 import { UserAuth } from '../../contexts/AuthContext'
+import SearchBar from '../atoms/SearchBar'
 
 const Header = ({ handleStateMenu }) => {
   const { currentUser } = UserAuth()
@@ -19,21 +20,18 @@ const Header = ({ handleStateMenu }) => {
         <Logo size={20} />
       </div>
       <div className="hidden md:flex md:justify-between w-full items-right px-4 text-gray-400">
+        <div className="md:min-w-[350px] lg:min-w-[600px]">
+          <SearchBar />
+        </div>
         <div className="flex space-x-2 items-center">
-          {!currentUser.photoURL === null && (
+          { currentUser.photoURL && (
             <img
               src={currentUser.photoURL}
-              alt="photoURL"
+              alt="userPhoto"
               className="max-w-8 max-h-8  rounded-full"
             />
           )}
-          {!currentUser.displayName && <p>{currentUser.displayName}</p>}
-        </div>
-        <div className="flex items-center space-x-2">
-          <div className="rounded-full w-8 h-8 bg-orange-500 grid place-items-center text-white">
-            J
-          </div>
-          <p>Jabes Enock</p>
+          {currentUser.displayName && <p>{currentUser.displayName}</p>}
         </div>
       </div>
       <button className="md:hidden" onClick={() => handleStateMenu()}>
