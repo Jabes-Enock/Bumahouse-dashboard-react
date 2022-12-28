@@ -1,6 +1,8 @@
 # Bumahouse - building materials house
 
-![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=STATUS&message=DEVELOPING&color=GREEN&style=for-the-badge)
+<p align="center"><img src="./gitHub/Cover.jpg" max="100%"></p>
+
+![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=STATUS&message=FINISHED&color=GREEN&style=for-the-badge)
 
 ## :bookmark_tabs:Summary
 
@@ -11,7 +13,6 @@
 5. [Installation](#Installation)
 6. [Categories](#categories)
 7. [My opinion about this project](#opinion)
-8. [New features](#new-features)
 
 
 <div id="Introduction">
@@ -21,6 +22,7 @@
 This project is a dashboard where you can manage your store by adding new products, deleting or just viewing all products registered in your database.
 
 I used a firebase database :fire: for this application, so authentication is handled by it as well as data storage.
+</div>
 </br>
 
 <div id="live-demo">
@@ -38,6 +40,8 @@ Google: Select any account
 
 
 ### :camera: [LIVE DEMO](https://bumahouse-dashboard.vercel.app/) :video_camera:
+:exclamation: OBS: if you can't access it, it means it has been discontinued or paused. :exclamation:
+
 </div>
 </br>
 
@@ -46,34 +50,34 @@ Google: Select any account
 ## :checkered_flag: Features and demo
 Here you will see the main resources used in this project, as well as some Gif's.
 ### Home
-<img src="./src/gitHub/home.gif">
+<img src="./gitHub/home.gif">
 
 <br/><br/>
 
 ### :lock: Private routes
 I added some private routes to this project to allow only authenticated people to access the dashboard.
 
-<img src="./src/gitHub/privateRoutes.gif">
+<img src="./gitHub/privateRoutes.gif">
 <br/><br/>
 
 ### :closed_lock_with_key: Authentication with email and password 
-<img src="./src/gitHub/AuthEmailAndPassword.gif">
+<img src="./gitHub/AuthEmailAndPassword.gif">
 <br/><br/>
 
 ### :lock_with_ink_pen: Authentication with Google 
-<img src="./src/gitHub/AuthWithGoogle.gif">
+<img src="./gitHub/AuthWithGoogle.gif">
 <br/><br/>
 
 ### Dashboard 
-<img src="./src/gitHub/Dashboard.gif">
+<img src="./gitHub/Dashboard.gif">
 <br/><br/>
 
 ### Produtos 
-<img src="./src/gitHub/produtos.gif">
+<img src="./gitHub/produtos.gif">
 <br/><br/>
 
 ### CRUD operations 
-<img src="./src/gitHub/adicionarProduto_CRUD.gif">
+<img src="./gitHub/adicionarProduto_CRUD.gif">
 <br/><br/>
 </div>
 </br>
@@ -317,7 +321,7 @@ The result is that I am proud of myself.
 </div>
 </br>
 
-<div id="new-features">
+<!-- <div id="new-features">
 
 ## :eyes: I wanna add this new features :eyes:
 
@@ -325,7 +329,7 @@ The result is that I am proud of myself.
 #### :two: Validate image type before uploading to Firebase database
 #### :three: Check if data has changed before uploading to Firebase database in the ...category/edit/:id route
 
-</div>
+</div> -->
 
 </br></br>
 
